@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/_template.xhtml">
+	<ui:define name="content">
+
+		<!-- FORM -->
+		<h:form enctype="multipart/form-data">
+			<p:messages id="messages" closable="true">
+				<p:autoUpdate />
+			</p:messages>
+
+			<p:card style="width: 25em; margin: 1em auto">
+
+				<f:facet name="title">Novo Visitante</f:facet>
+
+				<div class="ui-fluid">
+					<div class="p-field">
+						<label for="nome">Nome</label>
+						<p:inputText value="#{visitanteBean.visitante.nome}" id="nome"
+							type="text" required="true"
+							requiredMessage="O campo nome é obrigatório">
+							<f:ajax event="blur" render="messages" />
+						</p:inputText>
+					</div>
+					<div class="p-field">
+						<label for="dataNascimento">Data de Nascimento</label>
+						<p:datePicker value="#{visitanteBean.visitante.dataNascimento}"
+							id="dataNascimento" required="true"
+							requiredMessage="O campo de Nascimento é obrigatório" pattern="dd/MM/yy">
+							<f:ajax event="blur" render="messages" />
+						</p:datePicker>
+					</div>
+					<div class="p-field">
+						<label for="cpf">CPF</label>
+						<p:inputText value="#{visitanteBean.visitante.cpf}" id="cpf"
+							type="text">
+						</p:inputText>
+					</div>
+					<div class="p-field">
+						<label for="rg">RG</label>
+						<p:inputText value="#{visitanteBean.visitante.rg}" id="rg"
+							type="text">
+							<f:ajax event="blur" render="messages" />
+						</p:inputText>
+					</div>
+					<div class="p-field">
+						<label for="digitoRg">Digito RG</label>
+						<p:inputText value="#{visitanteBean.visitante.digitoRg}"
+							id="digitoRg">
+							<p:keyFilter mask="num" />
+							<f:ajax event="blur" render="messages" />
+						</p:inputText>
+					</div>
+
+					<div class="p-field">
+						<label for="image">Foto de perfil: </label>
+						<p:fileUpload value="#{visitanteBean.image}" id="image"
+							mode="simple" skinSimple="true">
+						</p:fileUpload>
+					</div>
+
+				</div>
+
+				<f:facet name="footer">
+					<p:commandButton action="#{visitanteBean.save()}"
+						icon="pi pi-check" value="Save" />
+					<p:commandButton icon="pi pi-times" value="Cancel"
+						styleClass="ui-button-secondary" style="margin-left: .5em" />
+				</f:facet>
+			</p:card>
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+
+
+
+</html>

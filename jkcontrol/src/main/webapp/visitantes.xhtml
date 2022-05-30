@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/_template.xhtml">
+	<ui:define name="content">
+		<p:messages id="messages" closable="true">
+			<p:autoUpdate />
+		</p:messages>
+		<h:form>
+			<div class="card" style="margin: 1em">
+				<p:dataTable var="visitante" value="#{visitanteBean.visitantes}">
+
+					<p:column headerText="Foto de perfil">
+						<img src="#{request.contextPath}#{visitante.imagePath}"
+							style="width: 120px" />
+					</p:column>
+
+					<p:column headerText="id do visitante">
+						<h:outputText value="#{visitante.idVisitante}" />
+					</p:column>
+
+					<p:column headerText="Nome">
+						<h:outputText value="#{visitante.nome}" />
+					</p:column>
+
+					<p:column headerText="Data de Nascimento">
+						<h:outputText value="#{visitante.dataNascimento}" />
+					</p:column>
+
+					<p:column headerText="cpf">
+						<h:outputText value="#{visitante.cpf}" />
+					</p:column>
+
+
+					<p:column headerText="rg">
+						<h:outputText value="#{visitante.rg}" />
+					</p:column>
+
+					<p:column headerText="digito RG">
+						<h:outputText value="#{visitante.digitoRg}" />
+					</p:column>
+
+					<p:column headerText="Data de Cadastro">
+						<h:outputText value="#{visitante.dataCadastro}" />
+					</p:column>
+
+				</p:dataTable>
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
